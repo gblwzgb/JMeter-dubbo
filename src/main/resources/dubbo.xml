@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubbo-jmeter"
+                       owner="programmer"
+                       organization="ucmed"/>
+
+    <dubbo:registry address="zookeeper://182.254.129.153:2181"/>
+
+    <dubbo:protocol name="dubbo" port="4345"/>
+
+    <dubbo:reference group="a9fcdd21-f317-45ac-94f9-bd21223bd45c"
+                     id="departmentService"
+                     interface="cn.ucmed.rubik.department.service.IDepartmentService"
+                     version="1.0.0"/>
+
+    <dubbo:reference interface="cn.ucmed.rubik.doctor.service.IDoctorService"
+                     id="doctorService"
+                     version="1.0.0"
+                     group="a9fcdd21-f317-45ac-94f9-bd21223bd45c"/>
+
+    <dubbo:reference interface="cn.ucmed.rubik.schedul.service.ISchedulService"
+                     id="schedulService"
+                     version="1.0.0"
+                     group="a9fcdd21-f317-45ac-94f9-bd21223bd45c"/>
+
+    <dubbo:reference interface="cn.ucmed.rubik.visittime.service.IVisitTimeService"
+                     id="visitTimeService"
+                     version="1.0.0"
+                     group="a9fcdd21-f317-45ac-94f9-bd21223bd45c"/>
+</beans>
